@@ -10,9 +10,9 @@ namespace Product_List
 {
     public class Product_Dal
     {
+        SqlConnection connection = new SqlConnection(@"server = (localdb)\mssqllocaldb; initial catalog = Products; integrated security = true"); //database baglantı
         public List<Products> Print()
         {
-            SqlConnection connection = new SqlConnection(@"server = (localdb)\mssqllocaldb; initial catalog = Products; integrated security = true");
             if (connection.State == ConnectionState.Closed)
             {
                 connection.Open();
@@ -38,8 +38,49 @@ namespace Product_List
             reader.Close();
             connection.Close();
             return products;
+        }
 
+        public void Add(Products product)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            SqlCommand command = new SqlCommand("Insert into Products values(@Name,@Price,@Stock)", connection);
+            command.Parameters.AddWithValue("Name", product.Name);
+            command.Parameters.AddWithValue("Price", product.Price);
+            command.Parameters.AddWithValue("Stock", product.Stock);
+            command.ExecuteNonQuery(); //gerçekten böyle bir veri var mı yok mu
 
+            connection.Close();
+        }
+
+        public void Update(Products product)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            SqlCommand command = new SqlCommand("Update Products set Name=@Name, Price=@Price, Stock=@Stock where Id=@Id", connection);
+            command.Parameters.AddWithValue("Name", product.Name);
+            command.Parameters.AddWithValue("Price", product.Price);
+            command.Parameters.AddWithValue("Stock", product.Stock);
+            command.Parameters.AddWithValue("Id", product.Id);
+            command.ExecuteNonQuery(); //gerçekten böyle bir veri var mı yok mu
+
+            connection.Close();
+        }
+
+        public void Delete(Products product)
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            SqlCommand command = new SqlCommand("Delete from Products where Id=@Id", connection);
+            command.Parameters.AddWithValue("Id", product.Id);
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
 
