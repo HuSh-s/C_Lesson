@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradeCalculator", "GradeCal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midterm&Final_Calculator", "Midterm&Final_Calculator\Midterm&Final_Calculator.csproj", "{6A8FFAF2-AA13-4AE7-97D7-A83AE98DF675}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perimeter_Calculator", "Perimeter_Calculator\Perimeter_Calculator.csproj", "{C16BFBEA-F33D-45C2-9029-B6EFF03F02D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6A8FFAF2-AA13-4AE7-97D7-A83AE98DF675}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A8FFAF2-AA13-4AE7-97D7-A83AE98DF675}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A8FFAF2-AA13-4AE7-97D7-A83AE98DF675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C16BFBEA-F33D-45C2-9029-B6EFF03F02D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C16BFBEA-F33D-45C2-9029-B6EFF03F02D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C16BFBEA-F33D-45C2-9029-B6EFF03F02D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C16BFBEA-F33D-45C2-9029-B6EFF03F02D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
