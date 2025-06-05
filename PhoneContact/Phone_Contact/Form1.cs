@@ -79,5 +79,26 @@ namespace Phone_Contact
             GetUser();
             MessageBox.Show("User Deleted !!");
         }
+
+        private void dgwUsers_CellEnter(Object sender, DataGridViewCellEventArgs e)
+        {
+            txtName.Text = dgwUsers.CurrentRow.Cells[1].Value.ToString();
+            txtSurname.Text = dgwUsers.CurrentRow.Cells[2].Value.ToString();
+            txtNumber.Text = dgwUsers.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataView dv = table.DefaultView;
+                dv.RowFilter = "Name Like '" + txtSearch.Text + "%'";
+                dgwUsers.DataSource = dv;
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("User Not Exist !!");
+            }
+        }
     }
 }
