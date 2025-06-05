@@ -40,6 +40,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.lblCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             // 
             this.btnSearch.Location = new System.Drawing.Point(616, 56);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 33);
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -150,12 +151,22 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.Location = new System.Drawing.Point(732, 419);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(39, 16);
+            this.lblCount.TabIndex = 12;
+            this.lblCount.Text = "count";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1274, 690);
+            this.Controls.Add(this.lblCount);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSave);
@@ -191,6 +202,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label lblCount;
     }
 }
 

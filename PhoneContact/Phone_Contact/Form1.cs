@@ -23,6 +23,21 @@ namespace Phone_Contact
         SqlDataAdapter adapter;
         DataTable table;
 
+        private bool Control()
+        {
+            if (txtName.Text == "" || txtSurname.Text == "" || txtNumber.Text == "")
+            {
+                MessageBox.Show("Please fill the empty areas !!");
+                return false;
+            }
+            return true;
+        }
+        //There are 37 people in the phone contacts
+        void CountUsers()
+        {
+            int people = dgwUsers.Rows.Count - 1;
+            lblCount.Text = "There are " + people + " people in Phone Contacts";
+        }
         void GetUser()
         {
             conn = new SqlConnection(@"server=(localdb)\mssqllocaldb; Initial Catalog = Contacts; Integrated Security = True");
@@ -37,10 +52,13 @@ namespace Phone_Contact
         private void Form1_Load(object sender, EventArgs e)
         {
             GetUser();
+            CountUsers();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!Control()) return;
+
             string query = "Insert into Users(Name, Surname, Number) values (@Name, @Surname, @Number)";
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@Name",txtName.Text);
@@ -50,11 +68,14 @@ namespace Phone_Contact
             cmd.ExecuteNonQuery();
             conn.Close();
             GetUser();
-            MessageBox.Show("User Added !!");
+            CountUsers();
+            MessageBox.Show(txtName.Text + " " + txtSurname.Text + " Added !!");
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (!Control()) return;
+
             string query = "Update Users set Name=@Name, Surname=@Surname, Number=@Number Where Id=@Id";
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@Name", txtName.Text);
@@ -65,11 +86,15 @@ namespace Phone_Contact
             cmd.ExecuteNonQuery();
             conn.Close();
             GetUser();
-            MessageBox.Show("User Updated !!");
+            CountUsers();
+            MessageBox.Show(txtName.Text + " " + txtSurname.Text + " Updated !!");
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            string name = dgwUsers.CurrentRow.Cells[1].Value.ToString();
+            string surname = dgwUsers.CurrentRow.Cells[2].Value.ToString();
+
             string query = "DELETE Users Where Id=@Id";
             cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@id", dgwUsers.CurrentRow.Cells[0].Value);
@@ -77,7 +102,8 @@ namespace Phone_Contact
             cmd.ExecuteNonQuery();
             conn.Close();
             GetUser();
-            MessageBox.Show("User Deleted !!");
+            CountUsers();
+            MessageBox.Show(name + " " + surname + " Deleted !!");
         }
 
         private void dgwUsers_CellEnter(Object sender, DataGridViewCellEventArgs e)
